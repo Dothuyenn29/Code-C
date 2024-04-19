@@ -1,0 +1,127 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include<math.h>
+void nhapSL(int &d,int &c){
+	do{
+		printf("\nMoi ban nhap vao so dong: ");
+		scanf("%d",&d);
+	 }while(d<0 || d>100);
+	 do{
+		printf("\nMoi ban nhap vao so cot: ");
+		scanf("%d",&c);
+	}while(c<0 || c>100);
+}
+ 
+void nhapMT(int a[100][100],int d,int c){
+	for(int i=0 ; i<d ; i++)
+	{
+		for(int j=0 ; j<c ; j++)
+		{
+		printf("a[%d][%d] = ",i,j);
+		scanf(" %d ", &a[i][j]);
+		}	
+      }
+}
+
+//sinh ma tran
+void sinhMT(int a[100][100],int d,int c) //ma tran vuong
+{
+	 srand(time(0));
+	  for(int i=0;i<d;i++)
+	  {
+		 for(int j=0;j<c;j++)
+		 {
+			a[i][j] = rand () % 10; 
+		}
+	}
+}
+
+void xuatMT(int a[100][100],int d,int c)
+{
+
+	 for(int i=0;i<d;i++)
+	 {
+	    for(int j=0;j<c;j++)
+		 {
+		   printf("%3d",a[i][j]);
+		 }
+		 printf("\n");
+     }
+}
+//liet ke duong cheo chinh
+
+void lietkeDCC(int a[100][100],int d,int c)
+{
+		 for(int i=0;i<d;i++)
+	 {
+	     for(int j=0;j<c;j++)
+	     if(i == j)
+		 {
+		   printf("%3d",a[i][j]);
+	     }else
+		 {
+	       	printf("%3c",32);
+		 }
+		 printf("\n");
+     }	
+}
+//liet ke duong cheo phu
+
+void lietkeCheoPhu(int a[100][100],int d,int c)
+{
+	for(int i=0;i<d;i++)
+	 {
+	     for(int j=0;j<c;j++)
+	     if(i+j==d-1)
+	     {
+	       printf("%3d",a[i][j]);	
+		 }else
+		 {
+		 	printf("%3c", 32);
+		 }
+	      printf("\n"); 
+	 }
+}
+//tong dong
+
+ int tongDong(int a[100][100],int d,int c,int k)//tra ve phan tu lon nhat
+ {
+ 	int s=0;
+	     for(int i=0;i<c;i++)
+		  
+	     s +=a[k][i];
+	     	return s;
+ }
+ //tong phan tu tren dong
+void tongptDong(int a[100][100],int d,int c,int k)
+ {
+ 	for(int i=0;i<d-1;i++){
+ 		printf("\nTong dong %d = %d ",i,tongDong(a,d,c,i));
+	 }
+ 	
+ }
+ 	
+ 	
+ 
+int main()
+{
+	 int d,c,a[100][100];
+	 nhapSL(d,c);
+	 sinhMT(a,d,c);
+	 printf("\nMa tran sinh ngau nhien la:\n ");
+	 xuatMT(a,d,c);
+	 //printf("\nDuong cheo chinh cua ma tran la:\n ");
+	 //lietkeDCC(a,d,c);
+	 //printf("\nDuong cheo phu cua ma tran la: \n ");
+	 //lietkeCheoPhu(a,d,c);
+	 
+	 int k;
+	 //printf("\nMoi ban nhap dong muon cong: ");
+	 //scanf("%d",&k);
+	 //printf("\nTong dong thu  %d = %4d  ",k, tongDongK(a,d,c,k));
+	 printf("\nTong moi dong ");
+	 tongptDong(a,d,c,k);
+	 
+	 return 0;
+}
